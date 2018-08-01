@@ -1,4 +1,5 @@
 const assert = require("chai").assert;
+const parse5 = require("parse5");
 const esquery = require("esquery");
 const esprima = require("esprima");
 const helpers = require("../helpers");
@@ -61,24 +62,26 @@ describe("BookForm.vue", () => {
       "The `bookData` `finishedReading` property is not defined with value of `false`"
     );
 
-    let borrowed = esquery(
+    let ownership = esquery(data[0], "Property[key.name=ownership]");
+
+    assert(
+      ownership.length > 0,
+      "The `bookData` `ownership` property is not defined."
+    );
+
+    let ownershipValue = esquery(
       data[0],
-      "Property[key.name=borrowed] > .value[value=false]"
+      "Property[key.name=ownership] > .value > .elements"
     );
 
     assert(
-      borrowed.length > 0,
-      "The `bookData` `borrowed` property is not defined with value of `false`"
-    );
-
-    let bought = esquery(
-      data[0],
-      "Property[key.name=bought] > .value[value=false]"
+      Array.isArray(ownershipValue),
+      "The `bookData` `ownership` value is not defined with a value of `[]`."
     );
 
     assert(
-      bought.length > 0,
-      "The `bookData` `bought` property is not defined with value of `false`"
+      ownershipValue.length == 0,
+      "The `bookData` `ownership` value does't seem to be an empty array."
     );
 
     let notes = esquery(
