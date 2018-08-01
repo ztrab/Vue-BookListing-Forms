@@ -1,26 +1,13 @@
-const fs = require("fs");
-const path = require("path");
 const assert = require("chai").assert;
-const parse5 = require("parse5");
 const esquery = require("esquery");
 const esprima = require("esprima");
+const helpers = require("../helpers");
 
 describe("BookForm.vue", () => {
   it("should contain a data function that returns a bookData object @book-form-contains-data-object", () => {
-    let file;
-    try {
-      file = fs.readFileSync(
-        path.join(process.cwd(), "src/components/BookForm.vue"),
-        "utf8"
-      );
-    } catch (e) {
-      assert(false, "The BookForm component does not exist");
-    }
-    const document = parse5.parseFragment(file.replace(/\n/g, ""), {
-      locationInfo: true
-    });
-    const nodes = document.childNodes;
-    const script = nodes.filter(node => node.nodeName === "script");
+    const file = helpers.readFile("src/components/BookForm.vue");
+    const nodes = helpers.parseFile(file);
+    const script = helpers.getHtmlTag("script", nodes);
 
     if (script.length == 0) {
       assert(
@@ -42,7 +29,7 @@ describe("BookForm.vue", () => {
     const bookData = esquery(ast, "Property[key.name=bookData]");
     assert(
       bookData.length > 0,
-      "The BookList's `bookData` object is not present in the return value from `data()`"
+      "The BookList's `bookData` object is not present"
     );
 
     let bookTitle = esquery(
@@ -66,12 +53,12 @@ describe("BookForm.vue", () => {
 
     let finishedReading = esquery(
       data[0],
-      "Property[key.name=finishedReading] > .value[value=true]"
+      "Property[key.name=finishedReading] > .value[value=false]"
     );
 
     assert(
       finishedReading.length > 0,
-      "The `bookData` `finishedReading` property is not defined with value of `true`"
+      "The `bookData` `finishedReading` property is not defined with value of `false`"
     );
 
     let borrowed = esquery(
