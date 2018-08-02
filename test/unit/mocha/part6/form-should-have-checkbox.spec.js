@@ -14,20 +14,20 @@ describe("BookForm.vue", () => {
 
     assert(
       checkbox.length > 0,
-      "The form doesn't have an `<input>` element with a `type` of `checkbox`"
+      "The form doesn't have an `<input>` element with a `type` of `checkbox`."
     );
 
     assert.hasAnyKeys(
       checkbox.attr(),
       ["v-model"],
-      "The BookForm checkbox does not have a `v-model` directive containing `bookData.finishedReading` as its value"
+      "The BookForm checkbox does not have a `v-model` directive containing `bookData.finishedReading` as its value."
     );
 
     assert.propertyVal(
       checkbox.attr(),
       "v-model",
       "bookData.finishedReading",
-      "The BookForm checkbox does not have a `v-model` directive containing `bookData.finishedReading` as its value"
+      "The BookForm checkbox does not have a `v-model` directive containing `bookData.finishedReading` as its value."
     );
   });
 });

@@ -40,7 +40,7 @@ describe("BookForm.vue", () => {
 
     assert(
       bookTitle.length > 0,
-      "The `bookData` `bookTitle` property is not defined with value of `''`"
+      "The `bookData` `bookTitle` property is not defined with value of `''`."
     );
 
     let bookAuthor = esquery(
@@ -49,7 +49,7 @@ describe("BookForm.vue", () => {
     );
     assert(
       bookAuthor.length > 0,
-      "The `bookData` `bookAuthor` property is not defined with value of `''`"
+      "The `bookData` `bookAuthor` property is not defined with value of `''`."
     );
 
     let finishedReading = esquery(
@@ -59,7 +59,7 @@ describe("BookForm.vue", () => {
 
     assert(
       finishedReading.length > 0,
-      "The `bookData` `finishedReading` property is not defined with value of `false`"
+      "The `bookData` `finishedReading` property is not defined with value of `false`."
     );
 
     let ownership = esquery(data[0], "Property[key.name=ownership]");
@@ -91,7 +91,7 @@ describe("BookForm.vue", () => {
 
     assert(
       notes.length > 0,
-      "The `bookData` `notes` property is not defined with value of `My notes about the book:`"
+      "The `bookData` `notes` property is not defined with value of `My notes about the book:`."
     );
   });
 });

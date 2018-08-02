@@ -12,19 +12,19 @@ describe("BookForm.vue", () => {
     const $ = cheerio.load(content);
     const textarea = $("form textarea");
 
-    assert(textarea.length > 0, "The form doesn't have an `<textarea>`");
+    assert(textarea.length > 0, "The form doesn't have an `<textarea>`.");
 
     assert.hasAnyKeys(
       textarea.attr(),
       ["v-model"],
-      "The BookForm textarea does not have a `v-model` directive containing `bookData.notes` as its value"
+      "The BookForm textarea does not have a `v-model` directive containing `bookData.notes` as its value."
     );
 
     assert.propertyVal(
       textarea.attr(),
       "v-model",
       "bookData.notes",
-      "The BookForm textarea does not have a `v-model` directive containing `bookData.notes` as its value"
+      "The BookForm textarea does not have a `v-model` directive containing `bookData.notes` as its value."
     );
   });
 });
