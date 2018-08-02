@@ -4,7 +4,7 @@ const esprima = require("esprima");
 const helpers = require("../helpers");
 
 describe("BookForm.vue", () => {
-  it("should contain a data function that returns a bookData object @book-form-contains-data-object", () => {
+  it("should contain a data function that returns a bookData object @book-form-emits-bookData", () => {
     const file = helpers.readFile("src/components/BookForm.vue");
     const nodes = helpers.parseFile(file);
     const script = helpers.getHtmlTag("script", nodes);
