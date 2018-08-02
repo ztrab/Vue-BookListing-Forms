@@ -1,6 +1,8 @@
 const assert = require("chai").assert;
 const esquery = require("esquery");
 const esprima = require("esprima");
+const parse5 = require("parse5");
+const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
 describe("BookForm.vue", () => {
@@ -8,6 +10,10 @@ describe("BookForm.vue", () => {
     const file = helpers.readFile("src/components/BookForm.vue");
     const nodes = helpers.parseFile(file);
     const script = helpers.getHtmlTag("script", nodes);
+    const template = helpers.getHtmlTag("template", nodes);
+    const content = parse5.serialize(template[0].content);
+    const $ = cheerio.load(content);
+    const form = $("form");
     let methods, bookSubmitMethod, bookDataParam, emmitBookData;
 
     if (script.length == 0) {
@@ -58,6 +64,13 @@ describe("BookForm.vue", () => {
     assert(
       emmitBookData.length > 0,
       "We are not calling `this.$emit()` with `bookData` as its second argument."
+    );
+
+    assert.propertyVal(
+      form.attr(),
+      "v-on:submit.prevent",
+      "bookSubmit(bookData)",
+      "The `v-on:submit.prevent` directive should update the `bookSubmit` call to take `bookData` as its argument."
     );
   });
 });
