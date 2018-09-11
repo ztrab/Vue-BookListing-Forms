@@ -16,12 +16,12 @@ describe("BookItem.vue", () => {
 
     assert(
       $(firstSpan).length > 0,
-      "It doesn't look like we are adding the `span` HTML element to the BookList template."
+      "It doesn't look like we are adding the `span` HTML element to the `BookList` template."
     );
 
     assert(
       $(secondSpan).length > 0,
-      "It doesn't look like we are adding two `span` elements to the BookList template."
+      "It doesn't look like we are adding two `span` elements to the `BookList` template."
     );
 
     assert.hasAnyKeys(

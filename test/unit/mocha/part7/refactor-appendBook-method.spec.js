@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookForm component."
+        "We either didn't find a script tag, or any code in a script tag in the BookList component."
       );
     }
 
@@ -46,7 +46,7 @@ describe("BookList.vue", () => {
     );
     assert(
       results.length > 0,
-      "The `appendBook()` method is not being called with `bookData` as its only argument."
+      "The `appendBook()` method is not passing `bookData` as its only argument."
     );
   });
 });
