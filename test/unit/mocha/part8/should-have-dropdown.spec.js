@@ -10,8 +10,21 @@ describe("BookForm.vue", () => {
     const tagName = helpers.getHtmlTag("template", nodes);
     const content = parse5.serialize(tagName[0].content);
     const $ = cheerio.load(content);
+    const h2 = $("h2");
     const select = $("select");
     const option = $("select > option");
+
+    assert(
+      h2.length > 0,
+      "The BookList's template does not have a <h2> element."
+    );
+
+    assert(
+      $(h2)
+        .text()
+        .match(/\s*Filtered\s*Books\s*by\s*Ownership/gi),
+      "The BookList's `<h2></h2>` element does not have `Filtered Books by Ownership` as its text."
+    );
 
     assert(
       select.length > 0,

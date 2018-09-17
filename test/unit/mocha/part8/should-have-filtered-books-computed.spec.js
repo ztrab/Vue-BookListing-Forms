@@ -4,7 +4,7 @@ const esprima = require("esprima");
 const helpers = require("../helpers");
 
 describe("BookList.vue", () => {
-  it("should pass bookData as an argument to appendBook() @refactor-appendBook-method", () => {
+  it("should filter books based on bought or borrowed @add-filtered-books-computed-prop", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
     const script = helpers.getHtmlTag("script", nodes);
@@ -60,7 +60,7 @@ describe("BookList.vue", () => {
 
     assert(
       importDeclaration[0].specifiers[0].local.name == "_",
-      "The `BookList` component is not importing `_ from lodash.`"
+      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
     );
 
     let lodashCall = esquery(
