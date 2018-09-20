@@ -10,6 +10,7 @@
     "test:module2": "NODE_ENV=test mocha 'test/unit/mocha/part2/*.spec.js' || true",
     "test:module3": "NODE_ENV=test mocha 'test/unit/mocha/part3/*.spec.js' || true",
     "test:module4": "NODE_ENV=test mocha 'test/unit/mocha/part4/*.spec.js' || true",
+    "test:module5": "NODE_ENV=test mocha 'test/unit/mocha/part5/*.spec.js' || true",
     "test": "NODE_ENV=test mocha 'test/unit/mocha/**/*.spec.js' || true",
     "debug": "NODE_ENV=test mocha --debug-brk",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
