@@ -4,7 +4,7 @@ const esprima = require("esprima");
 const helpers = require("../helpers");
 
 describe("BookList.vue", () => {
-  it("should contain a method that uses bookData to push to array contents @append-book-uses-bookData-to-push", () => {
+  it("should add finishedReading to books array through to appendBook() @add-finished-reading-inside-appendBook", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
     const script = helpers.getHtmlTag("script", nodes);
@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a `script tag`, or any code in a script tag in the `BookForm` component."
+        "We either didn't find a `script` tag, or any code in a script tag in the `BookForm` component."
       );
     }
 
@@ -66,6 +66,24 @@ describe("BookList.vue", () => {
     assert(
       results.length > 0,
       "In the `BookList`'s `appendBook()` method, the `author` key is not being assigned to the `bookData.bookAuthor` value."
+    );
+
+    results = esquery(
+      methods[0],
+      'CallExpression > ObjectExpression > Property[key.name="finishedReading"]'
+    );
+    assert(
+      results.length > 0,
+      "The `BookList`'s `appendBook()` method should be pushing a `finishedReading` property with the `bookData.finishedReading` value to the `books` data."
+    );
+
+    results = esquery(
+      methods[0],
+      'CallExpression > ObjectExpression > Property[key.name="finishedReading"] > MemberExpression[object.name="bookData"][property.name="finishedReading"]'
+    );
+    assert(
+      results.length > 0,
+      "In the `BookList`'s `appendBook()` method call, the `finishedReading` key is not being assigned to the `bookData.finishedReading` value."
     );
   });
 });

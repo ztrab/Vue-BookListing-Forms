@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
 describe("BookItem.vue", () => {
-  it("should show read or not read according to book.finishedReading @book-item-should-show-read", () => {
+  it("should show read or not read according to book.finishedReading @book-item-should-show-not-read", () => {
     const file = helpers.readFile("src/components/BookItem.vue");
     const nodes = helpers.parseFile(file);
     const tagName = helpers.getHtmlTag("template", nodes);
@@ -12,16 +12,22 @@ describe("BookItem.vue", () => {
     const $ = cheerio.load(content);
 
     const firstSpan = $("span");
+    const secondSpan = $("span:nth-child(2n)");
 
     assert(
       $(firstSpan).length > 0,
       "It doesn't look like we are adding the `<span></span>` HTML element to the `BookList`'s template."
     );
 
+    assert(
+      $(secondSpan).length > 0,
+      "It doesn't look like we are adding two `<span></span>` elements to the `BookList`'s template."
+    );
+
     assert.hasAnyKeys(
       firstSpan.attr(),
       ["v-if"],
-      "The `BookItem` template does not have a `<span></span>` with a `v-if` directive."
+      "The `BookItem`'s template does not have a `<span></span>` with a `v-if` directive."
     );
 
     assert.propertyVal(
@@ -36,6 +42,19 @@ describe("BookItem.vue", () => {
         .text()
         .match(/\s*Read/gi),
       "The `BookItem`'s `<span></span>` with the `v-if` directive does not have a text of `Read`."
+    );
+
+    assert.hasAnyKeys(
+      secondSpan.attr(),
+      ["v-else"],
+      "The `BookItem`'s template does not a `<span></span>` with a `v-else` directive."
+    );
+
+    assert(
+      $(secondSpan)
+        .text()
+        .match(/\s*Not\s*Read/gi),
+      "The `BookItem`'s `<span></span>` with the `v-else` directive does not have a text of `Not Read`."
     );
   });
 });
