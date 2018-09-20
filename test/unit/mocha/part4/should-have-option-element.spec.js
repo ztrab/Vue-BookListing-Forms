@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
 describe("BookForm.vue", () => {
-  it("should contain a select with a `v-model` directive @book-form-will-contain-select-and-option", () => {
+  it("should contain a select with a `v-model` directive @book-form-will-contain-option-tag", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
     const tagName = helpers.getHtmlTag("template", nodes);
@@ -16,32 +16,32 @@ describe("BookForm.vue", () => {
 
     assert(
       h2.length > 0,
-      "The BookList's template does not have a <h2> element."
+      "The `BookList`'s template does not have a `<h2>` element."
     );
 
     assert(
       $(h2)
         .text()
         .match(/\s*Filtered\s*Books\s*by\s*Ownership/gi),
-      "The BookList's `<h2></h2>` element does not have `Filtered Books by Ownership` as its text."
+      "The `BookList`'s `<h2></h2>` element does not have `Filtered Books by Ownership` as its text."
     );
 
     assert(
       select.length > 0,
-      "The BookList's template does not have a <select> element."
+      "The `BookList`'s template does not have a `<select>` element."
     );
 
     assert.hasAnyKeys(
       select.attr(),
       ["v-model"],
-      "The BookList `<select></select>` does not have a `v-model` directive containing `holding` as its value."
+      "The `BookList`s `<select></select>` element does not have a `v-model` directive containing `holding` as its value."
     );
 
     assert.propertyVal(
       select.attr(),
       "v-model",
       "holding",
-      "The BookList `<select></select>` does not have a `v-model` directive containing `holding` as its value."
+      "The `BookList`'s `<select></select>` tag does not have a `v-model` directive containing `holding` as its value."
     );
 
     assert(
@@ -52,21 +52,21 @@ describe("BookForm.vue", () => {
     assert.hasAnyKeys(
       option.attr(),
       ["v-for"],
-      "The BookList `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
+      "The `BookList`'s `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
     );
 
     assert.propertyVal(
       option.attr(),
       "v-for",
       "filter in filters",
-      "The BookList `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
+      "The `BookList`s `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
     );
 
     assert(
       $(option)
         .text()
         .match(/\s*{{filter}}/gi),
-      "The BookList `<option></option>` element does not have {{filter}} as its text."
+      "The `BookList`'s `<option></option>` element does not have {{filter}} as its text."
     );
   });
 });

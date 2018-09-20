@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookList component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 
@@ -31,14 +31,14 @@ describe("BookList.vue", () => {
     }
     assert(
       computed.length > 0,
-      "The BookForm's `computed` declaration is not present."
+      "The `BookList`'s `computed` declaration is not present."
     );
 
     let results = esquery(computed[0], 'Identifier[name="searchedBooks"]');
 
     assert(
       results.length > 0,
-      "The BookList's `computed` object is not defining an `searchedBooks` computed property."
+      "The `BookList`'s `computed` object is not defining a `searchedBooks` computed property."
     );
 
     let constant = esquery(

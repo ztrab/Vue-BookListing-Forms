@@ -14,34 +14,34 @@ describe("BookForm.vue", () => {
 
     assert(
       input.length > 0,
-      "The BookList's template does not have a `<input>` element."
+      "The `BookList`'s template does not have an `<input>` element."
     );
 
     assert.hasAnyKeys(
       input.attr(),
       ["v-model"],
-      "The BookList's `<input>` does not have a `v-model` directive containing `searchInput` as its value."
+      "The `BookList`'s `<input>` does not have a `v-model` directive containing `searchInput` as its value."
     );
 
     assert.propertyVal(
       input.attr(),
       "v-model",
       "searchInput",
-      "The BookList's `<input>` does not have a `v-model` directive containing `searchInput` as its value."
+      "The `BookList`'s `<input>` does not have a `v-model` directive containing `searchInput` as its value."
     );
 
     assert.propertyVal(
       input.attr(),
       "type",
       "text",
-      "The BookList's `<input>` does not have a `type` attribute containing `text` as its value."
+      "The `BookList`'s `<input>` does not have a `type` attribute containing `text` as its value."
     );
 
     assert.propertyVal(
       input.attr(),
       "placeholder",
       "Search Books",
-      "The BookList's `<input>` does not have a `placeholder` attribute containing `Search Books` as its value."
+      "The `BookList`'s `<input>` does not have a `placeholder` attribute containing `Search Books` as its value."
     );
   });
 });

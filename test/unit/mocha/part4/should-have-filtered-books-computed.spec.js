@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookList component."
+        "We either didn't find a `script` tag, or any code in a script tag in the `BookList` component."
       );
     }
 
@@ -29,9 +29,31 @@ describe("BookList.vue", () => {
         "Something went wrong and we weren't able to check your code."
       );
     }
+    let importDeclaration = esquery(ast, "ImportDeclaration");
+
+    assert(
+      importDeclaration.length > 0,
+      "The `BookList` component does not contain an import statement."
+    );
+
+    assert(
+      importDeclaration[0].specifiers[0].local.name == "_",
+      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
+    );
+
+    importDeclaration = esquery(
+      ast,
+      "ImportDeclaration > Literal[value=lodash]"
+    );
+
+    assert(
+      importDeclaration.length > 0,
+      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
+    );
+
     assert(
       computed.length > 0,
-      "The BookForm's `computed` declaration is not present."
+      "The `BookList`'s `computed` declaration is not present."
     );
 
     let results = esquery(computed[0], 'Identifier[name="filteredBooks"]');
@@ -49,18 +71,6 @@ describe("BookList.vue", () => {
     assert(
       returnStatement.length > 0,
       "The `filteredBooks` computed is missing the `return` keyword."
-    );
-
-    let importDeclaration = esquery(ast, "ImportDeclaration");
-
-    assert(
-      importDeclaration.length > 0,
-      "The App component does not contain an import statement."
-    );
-
-    assert(
-      importDeclaration[0].specifiers[0].local.name == "_",
-      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
     );
 
     let lodashCall = esquery(
@@ -111,11 +121,6 @@ describe("BookList.vue", () => {
     assert(
       holding.length > 0,
       'Inside the computed property `filteredBooks`, the lodash `_.filter` call should take `["ownership", this.holding]` as its second argument.'
-    );
-
-    let call = esquery(
-      computed[0],
-      'Property[key.name="filteredBooks"] > FunctionExpression > BlockStatement > ReturnStatement > CallExpression > MemberExpression > Identifier[name="_"]'
     );
   });
 });
