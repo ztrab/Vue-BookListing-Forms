@@ -12,7 +12,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookForm component."
+        "We either didn't find a `script` tag, or any code in a script tag in the `BookForm` component."
       );
     }
 
@@ -23,11 +23,11 @@ describe("BookList.vue", () => {
     const data = esquery(ast, "Property[key.name=data]");
     assert(
       data.length > 0,
-      "The BookList's `data()` method's return is not present."
+      "The `BookList`'s `data()` method's return is not present."
     );
 
     const books = esquery(ast, "Property[key.name=books]");
-    assert(books.length > 0, "The BookList's `books` array is not present");
+    assert(books.length > 0, "The BookList's `books` array is not present.");
 
     let finishedReading = esquery(
       books[0],

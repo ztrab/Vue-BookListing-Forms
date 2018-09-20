@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookForm component."
+        "We either didn't find a `script tag`, or any code in a script tag in the `BookForm` component."
       );
     }
 
@@ -32,13 +32,13 @@ describe("BookList.vue", () => {
 
     assert(
       methods.length > 0,
-      "The BookList's `methods` declaration is not present."
+      "The `BookList`'s `methods` declaration is not present."
     );
 
     let results = esquery(methods[0], 'Identifier[name="appendBook"]');
     assert(
       results.length > 0,
-      "The BookList's `methods` object is not defining an `appendBook()` method."
+      "The `BookList`'s `methods` object is not defining an `appendBook()` method."
     );
 
     results = esquery(
@@ -47,7 +47,7 @@ describe("BookList.vue", () => {
     );
     assert(
       results.length > 0,
-      "The BookList's `appendBook()` method is not pushing anything to the array `books`."
+      "The `BookList`'s `appendBook()` method is not pushing anything to the array `books`."
     );
 
     results = esquery(
@@ -56,7 +56,7 @@ describe("BookList.vue", () => {
     );
     assert(
       results.length > 0,
-      "In BookList's `appendBook()` method, the `title` key is not being assigned to the `bookData.bookTitle` value."
+      "In the `BookList`'s `appendBook()` method, the `title` key is not being assigned to the `bookData.bookTitle` value."
     );
 
     results = esquery(
@@ -65,25 +65,7 @@ describe("BookList.vue", () => {
     );
     assert(
       results.length > 0,
-      "In BookList's `appendBook()` method, the `author` key is not being assigned to the `bookData.bookAuthor` value."
-    );
-
-    results = esquery(
-      methods[0],
-      'CallExpression > ObjectExpression > Property[key.name="finishedReading"]'
-    );
-    assert(
-      results.length > 0,
-      "The BookList's `appendBook()` method should be pushing a `finishedReading` property with the `bookData.finishedReading` value to the `books` data."
-    );
-
-    results = esquery(
-      methods[0],
-      'CallExpression > ObjectExpression > Property[key.name="finishedReading"] > MemberExpression[object.name="bookData"][property.name="finishedReading"]'
-    );
-    assert(
-      results.length > 0,
-      "In BookList's `appendBook()` method call, the `finishedReading` key is not being assigned to the `bookData.finishedReading` value."
+      "In the `BookList`'s `appendBook()` method, the `author` key is not being assigned to the `bookData.bookAuthor` value."
     );
   });
 });
