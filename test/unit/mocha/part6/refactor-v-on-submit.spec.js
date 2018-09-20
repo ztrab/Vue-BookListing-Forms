@@ -6,11 +6,14 @@ const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
 describe("BookForm.vue", () => {
-  it("should contain a data function that returns a bookData object @book-form-emits-bookData", () => {
+  it("should have the v-on:submit method taking bookData @book-form-bookSubmit-takes-bookData", () => {
     const file = helpers.readFile("src/components/BookForm.vue");
     const nodes = helpers.parseFile(file);
     const script = helpers.getHtmlTag("script", nodes);
-
+    const template = helpers.getHtmlTag("template", nodes);
+    const content = parse5.serialize(template[0].content);
+    const $ = cheerio.load(content);
+    const form = $("form");
     let methods, bookSubmitMethod, bookDataParam, emmitBookData;
 
     if (script.length == 0) {
@@ -61,6 +64,13 @@ describe("BookForm.vue", () => {
     assert(
       emmitBookData.length > 0,
       "We are not calling `this.$emit()` with `bookData` as its second argument."
+    );
+
+    assert.propertyVal(
+      form.attr(),
+      "v-on:submit.prevent",
+      "bookSubmit(bookData)",
+      "The `v-on:submit.prevent` directive should update the `bookSubmit` call to take `bookData` as its argument."
     );
   });
 });
