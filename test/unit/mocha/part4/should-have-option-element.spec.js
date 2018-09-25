@@ -46,7 +46,7 @@ describe("BookForm.vue", () => {
 
     assert(
       option.length > 0,
-      "The BookList's template does not have an <option> element."
+      "The `BookList`'s template does not have an `<option>` element."
     );
 
     assert.hasAnyKeys(
@@ -59,14 +59,14 @@ describe("BookForm.vue", () => {
       option.attr(),
       "v-for",
       "filter in filters",
-      "The `BookList`s `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
+      "The `BookList`'s `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
     );
 
     assert(
       $(option)
         .text()
-        .match(/\s*{{filter}}/gi),
-      "The `BookList`'s `<option></option>` element does not have {{filter}} as its text."
+        .match(/\s*{{\s*filter\s*}}/gi),
+      "The `BookList`'s `<option></option>` element does not have `{{filter}}` as its text."
     );
   });
 });
