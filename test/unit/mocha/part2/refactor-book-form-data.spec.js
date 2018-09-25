@@ -83,15 +83,5 @@ describe("BookForm.vue", () => {
       ownershipValue.length == 0,
       "The `bookData` `ownership` value does't seem to be an empty array."
     );
-
-    let notes = esquery(
-      data[0],
-      "Property[key.name=notes] > .value[value='My notes about the book:']"
-    );
-
-    assert(
-      notes.length > 0,
-      "The `bookData` `notes` property is not defined with value of `My notes about the book:`"
-    );
   });
 });

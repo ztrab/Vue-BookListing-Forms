@@ -43,21 +43,21 @@ describe("BookForm.vue", () => {
     assert(
       $('label[for="finishedReading"]')
         .text()
-        .match(/\s*Finished\s*Reading/),
+        .match(/\s*Finished\s*Reading/gi),
       "The BookForm does not have a label with a text of `Finished Reading`."
     );
 
     assert(
       $('label[for="borrowed"]')
         .text()
-        .match(/\s*borrowed/),
+        .match(/\s*borrowed/gi),
       "The BookForm does not have a label with a text of `borrowed`."
     );
 
     assert(
       $('label[for="bought"]')
         .text()
-        .match(/\s*bought/),
+        .match(/\s*bought/gi),
       "The BookForm does not have a label with a text of `bought`."
     );
   });
