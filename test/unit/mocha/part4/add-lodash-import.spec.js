@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a `script` tag, or any code in a script tag in the `BookList` component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 
@@ -34,12 +34,12 @@ describe("BookList.vue", () => {
 
     assert(
       importDeclaration.length > 0,
-      "The `BookList` component does not contain an import statement."
+      "The `BookList` component does not contain an `import` statement."
     );
 
     assert(
       importDeclaration[0].specifiers[0].local.name == "_",
-      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
+      'The `BookList` component is not importing `_ from "lodash";`. Add `import _ from "lodash";` at the top of the `<script></script>` tag. '
     );
 
     importDeclaration = esquery(
@@ -49,7 +49,7 @@ describe("BookList.vue", () => {
 
     assert(
       importDeclaration.length > 0,
-      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
+      'The `BookList` component is not importing `_ from "lodash";`. Add `import _ from "lodash";` at the top of the `<script></script>` tag. '
     );
   });
 });
