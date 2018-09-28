@@ -25,13 +25,13 @@ describe("BookForm.vue", () => {
 
     assert(
       bookItem.length > 1,
-      "The BookList's template does not contain two `<book-item></book-item>` components in it."
+      "The `BookList`'s template does not contain two `<book-item></book-item>` components in it."
     );
 
     assert.hasAnyKeys(
       bookItem.attr(),
       ["v-for"],
-      "The BookList `<book-item></book-item>` does not have a `v-for` directive containing 'book in filteredBooks' as its value."
+      "The `BookList's` `<book-item></book-item>` does not have a `v-for` directive containing 'book in filteredBooks' as its value."
     );
 
     let bookItem2;
@@ -42,7 +42,7 @@ describe("BookForm.vue", () => {
 
     assert.isTrue(
       bookItem2,
-      "The second BookList's `<book-item></book-item>` does not have a `v-for` directive containing 'book in filteredBooks' as its value."
+      "The second `BookList`'s `<book-item></book-item>` does not have a `v-for` directive containing 'book in filteredBooks' as its value."
     );
   });
 });

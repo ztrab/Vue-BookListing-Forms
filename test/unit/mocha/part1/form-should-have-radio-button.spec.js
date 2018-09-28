@@ -14,20 +14,20 @@ describe("BookForm.vue", () => {
 
     assert(
       radio.length == 2,
-      "The form doesn't have two `<input>` elements with a `type` of `radio`"
+      "The form doesn't have two `<input>` elements with a `type` of `radio`."
     );
 
     assert.hasAnyKeys(
       radio.attr(),
       ["v-model"],
-      "The BookForm radio does not have a `v-model` directive containing `bookData.ownership` as its value"
+      "The `BookForm` radio does not have a `v-model` directive containing `bookData.ownership` as its value."
     );
 
     assert.propertyVal(
       radio.attr(),
       "v-model",
       "bookData.ownership",
-      "The BookForm radio does not have a `v-model` directive containing `bookData.finishedReading` as its value"
+      "The `BookForm` radio does not have a `v-model` directive containing `bookData.finishedReading` as its value."
     );
   });
 });

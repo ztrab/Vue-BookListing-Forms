@@ -19,7 +19,7 @@ describe("BookForm.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookForm component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookForm` component."
       );
     }
 
@@ -43,7 +43,7 @@ describe("BookForm.vue", () => {
     bookSubmitMethod = esquery(methods[0], 'Identifier[name="bookSubmit"]');
     assert(
       bookSubmitMethod.length > 0,
-      "The BookForm's `methods` object is not defining a `bookSubmit()` method"
+      "The `BookForm`'s `methods` object is not defining a `bookSubmit()` method."
     );
 
     bookDataParam = esquery(
@@ -53,7 +53,7 @@ describe("BookForm.vue", () => {
 
     assert(
       bookDataParam.length > 0,
-      "We are not passing `bookData` as a parameter of `bookSubmit()`"
+      "We are not passing `bookData` as a parameter of `bookSubmit()`."
     );
 
     emmitBookData = esquery(

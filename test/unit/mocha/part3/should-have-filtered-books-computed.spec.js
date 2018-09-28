@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a `script` tag, or any code in a script tag in the `BookList` component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 
@@ -33,12 +33,12 @@ describe("BookList.vue", () => {
 
     assert(
       importDeclaration.length > 0,
-      "The `BookList` component does not contain an import statement."
+      "The `BookList` component does not contain an `import` statement."
     );
 
     assert(
       importDeclaration[0].specifiers[0].local.name == "_",
-      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
+      'The `BookList` component is not importing `_ from "lodash".` Add `import _ from "lodash";` at the top of the `<script></script>` tag. '
     );
 
     importDeclaration = esquery(
@@ -48,7 +48,7 @@ describe("BookList.vue", () => {
 
     assert(
       importDeclaration.length > 0,
-      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
+      'The `BookList` component is not importing `_ from "lodash".` Add `import _ from "lodash";` at the top of the `<script></script>` tag. '
     );
 
     assert(
@@ -60,7 +60,7 @@ describe("BookList.vue", () => {
 
     assert(
       results.length > 0,
-      "The BookList's `computed` object is not defining an `filteredBooks` computed property."
+      "The `BookList`'s `computed` object is not defining an `filteredBooks` computed property."
     );
 
     let returnStatement = esquery(
@@ -70,7 +70,7 @@ describe("BookList.vue", () => {
 
     assert(
       returnStatement.length > 0,
-      "The `filteredBooks` computed is missing the `return` keyword."
+      "The `filteredBooks` computed property is missing the `return` keyword."
     );
 
     let lodashCall = esquery(
@@ -80,7 +80,7 @@ describe("BookList.vue", () => {
 
     assert(
       lodashCall.length > 0,
-      "The `filteredBooks` should be using lodash's filter function. Make sure to add `_.filter()` after your `return` statement."
+      "The `filteredBooks` property should be using `lodash`'s `filter` function. Make sure to add `_.filter()` after your `return` statement."
     );
 
     let filter = esquery(
@@ -90,7 +90,7 @@ describe("BookList.vue", () => {
 
     assert(
       filter.length > 0,
-      "The `filteredBooks` should be using lodash's filter function. Make sure to add `_.filter()` after your `return` statement."
+      "The `filteredBooks` property` should be using `lodash`'s `filter` function. Make sure to add `_.filter()` after your `return` statement."
     );
 
     let books = esquery(

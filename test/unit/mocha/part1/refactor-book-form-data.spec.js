@@ -13,7 +13,7 @@ describe("BookForm.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookForm component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookForm` component."
       );
     }
 
@@ -24,13 +24,13 @@ describe("BookForm.vue", () => {
     const data = esquery(ast, "Property[key.name=data]");
     assert(
       data.length > 0,
-      "The BookList's `data()` method's return is not present"
+      "The `BookList`'s `data()` method's is not present."
     );
 
     const bookData = esquery(ast, "Property[key.name=bookData]");
     assert(
       bookData.length > 0,
-      "The BookList's `bookData` object is not present"
+      "The `BookList`'s `bookData` object is not present."
     );
 
     let bookTitle = esquery(
@@ -40,7 +40,7 @@ describe("BookForm.vue", () => {
 
     assert(
       bookTitle.length > 0,
-      "The `bookData` `bookTitle` property is not defined with value of `''`"
+      "The `bookData`'s `bookTitle` property is not defined with value of `''`."
     );
 
     let bookAuthor = esquery(
@@ -49,7 +49,7 @@ describe("BookForm.vue", () => {
     );
     assert(
       bookAuthor.length > 0,
-      "The `bookData` `bookAuthor` property is not defined with value of `''`"
+      "The `bookData`'s `bookAuthor` property is not defined with value of `''`."
     );
 
     let finishedReading = esquery(
@@ -59,14 +59,14 @@ describe("BookForm.vue", () => {
 
     assert(
       finishedReading.length > 0,
-      "The `bookData` `finishedReading` property is not defined with value of `false`"
+      "The `bookData`'s `finishedReading` property is not defined with value of `false`."
     );
 
     let ownership = esquery(data[0], "Property[key.name=ownership]");
 
     assert(
       ownership.length > 0,
-      "The `bookData` `ownership` property is not defined."
+      "The `bookData`'s `ownership` property is not defined."
     );
 
     let ownershipValue = esquery(
@@ -76,12 +76,12 @@ describe("BookForm.vue", () => {
 
     assert(
       Array.isArray(ownershipValue),
-      "The `bookData` `ownership` value is not defined with a value of `[]`."
+      "The `bookData`'s `ownership` value is not defined with a value of `[]`."
     );
 
     assert(
       ownershipValue.length == 0,
-      "The `bookData` `ownership` value does't seem to be an empty array."
+      "The `bookData`'s `ownership` value does't seem to be an empty array."
     );
   });
 });

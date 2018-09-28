@@ -21,7 +21,7 @@ describe("BookItem.vue", () => {
     assert.hasAnyKeys(
       firstSpan.attr(),
       ["v-if"],
-      "The `BookItem` template does not have a `<span></span>` with a `v-if` directive."
+      "The `BookItem`'s template does not have a `<span></span>` with a `v-if` directive."
     );
 
     assert.propertyVal(

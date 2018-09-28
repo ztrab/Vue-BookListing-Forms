@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a `script` tag, or any code in a script tag in the `BookList` component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 

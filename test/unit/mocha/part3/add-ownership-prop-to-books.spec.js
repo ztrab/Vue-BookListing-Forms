@@ -12,7 +12,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a script tag, or any code in a script tag in the BookForm component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 
@@ -23,17 +23,16 @@ describe("BookList.vue", () => {
     const data = esquery(ast, "Property[key.name=data]");
     assert(
       data.length > 0,
-      "The BookList's `data()` method's return is not present."
+      "The `BookList`'s `data()` property is not present."
     );
 
     const books = esquery(ast, "Property[key.name=books]");
-    assert(books.length > 0, "The BookList's `books` array is not present");
+    assert(books.length > 0, "The `BookList`'s `books` array is not present.");
 
     let ownership = esquery(books[0], "Property[key.name=ownership]");
-
     assert(
       ownership.length === 3,
-      "The `book` array should have a `ownership` property in each book object."
+      "The `books` array should have an `ownership` property in each object of the `books` array."
     );
 
     let ownershipBorrowed = esquery(
@@ -43,7 +42,7 @@ describe("BookList.vue", () => {
 
     assert(
       ownershipBorrowed.length == 2,
-      "The `book` array should have two `ownership` properties with `borrowed` as their values."
+      "The `books` array should have two `ownership` properties with `borrowed` as one of its values."
     );
 
     let ownershipBought = esquery(
@@ -53,7 +52,7 @@ describe("BookList.vue", () => {
 
     assert(
       ownershipBought.length == 1,
-      "The `book` array should have one `ownershipt` property with `bought` as its value."
+      "The `books` array should have one `ownership` property with `bought` as one of  its value."
     );
   });
 });

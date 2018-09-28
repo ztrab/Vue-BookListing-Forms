@@ -66,7 +66,7 @@ describe("BookForm.vue", () => {
       $(option)
         .text()
         .match(/\s*{{\s*filter\s*}}/gi),
-      "The `BookList`'s `<option></option>` element does not have `{{filter}}` as its text."
+      "The `BookList`'s `<option></option>` element does not have `{{ filter }}` as its text."
     );
   });
 });

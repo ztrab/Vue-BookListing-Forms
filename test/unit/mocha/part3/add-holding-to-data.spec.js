@@ -12,7 +12,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a `script` tag, or any code in a script tag in the `BookList` component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 
@@ -30,7 +30,7 @@ describe("BookList.vue", () => {
 
     assert(
       filters.length > 0,
-      "The BookList's `filters` property is not present inside the data object."
+      "The `BookList`'s `filters` property is not present inside the data object."
     );
 
     let bought = esquery(
@@ -50,14 +50,14 @@ describe("BookList.vue", () => {
 
     assert(
       borrowed.length > 0,
-      "The `filters` array should have the value of `borrowed`."
+      "The `filters` array should have a value of `borrowed`."
     );
 
     const holding = esquery(data[0], "Property[key.name=holding]");
 
     assert(
       holding.length > 0,
-      "The `BookList`'s `holding` property is not present inside the data object."
+      "The `BookList`'s `holding` property is not present inside the `data()` object."
     );
 
     bought = esquery(

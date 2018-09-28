@@ -98,7 +98,7 @@ describe("BookList.vue", () => {
 
     assert(
       book.length > 0,
-      "It doesn't look like we are using `book.title.toLowerCase()` to return the searched book inside the `searchedBooks` computed property."
+      "It doesn't look like we are using `book.title.toLowerCase()` to return the searched book from inside the `searchedBooks` computed property."
     );
 
     let title = esquery(
@@ -108,7 +108,7 @@ describe("BookList.vue", () => {
 
     assert(
       title.length > 0,
-      "It doesn't look like we are using `book.title.toLowerCase()` to return the searched book inside the `searchedBooks` computed property."
+      "It doesn't look like we are using `book.title.toLowerCase()` to return the searched book from inside the `searchedBooks` computed property."
     );
 
     let firstLowerCase = esquery(
@@ -118,7 +118,7 @@ describe("BookList.vue", () => {
 
     assert(
       firstLowerCase.length > 0,
-      "It doesn't look like we are using `book.title.toLowerCase()` to return the searched book inside the `searchedBooks` computed property."
+      "It doesn't look like we are using `book.title.toLowerCase()` to return the searched book from inside the `searchedBooks` computed property."
     );
 
     let matchCall = esquery(
@@ -148,7 +148,7 @@ describe("BookList.vue", () => {
 
     assert(
       matchLowerCase.length > 0,
-      "We want to call the `lowerCase()` method in the `this.searchInput`."
+      "We want to call the `lowerCase()` method in `this.searchInput`."
     );
   });
 });

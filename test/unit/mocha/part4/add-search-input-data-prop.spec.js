@@ -12,7 +12,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a `script` tag, or any code in a script tag in the `BookList` component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 
@@ -30,7 +30,7 @@ describe("BookList.vue", () => {
 
     assert(
       searchInput.length > 0,
-      "The `BookList`'s `searchInput` property is not present inside the data object."
+      "The `BookList`'s `searchInput` property is not present inside the `data()` object."
     );
 
     let searchValue = esquery(

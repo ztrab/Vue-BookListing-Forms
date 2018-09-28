@@ -20,45 +20,45 @@ describe("BookForm.vue", () => {
     assert.hasAnyKeys(
       label.attr(),
       ["for"],
-      "The BookForm label does not have a `for` attribute containing `finishedReading` as its value."
+      "The `BookForm` `<label></label>` does not have a `for` attribute containing `finishedReading` as its value."
     );
 
     assert.propertyVal(
       label.attr(),
       "for",
       "finishedReading",
-      "The BookForm label does not have a `for` attribute containing `finishedReading` as its value."
+      "The `BookForm` `<label></label>` does not have a `for` attribute containing `finishedReading` as its value."
     );
 
     assert(
       $('label[for="borrowed"]').length > 0,
-      "The BookForm label does not have a `for` attribute containing `borrowed` as its value."
+      "The `BookForm `<label></label>` does not have a `for` attribute containing `borrowed` as its value."
     );
 
     assert(
       $('label[for="bought"]').length > 0,
-      "The BookForm label does not have a `for` attribute containing `bought` as its value."
+      "The `BookForm` `<label></label>` does not have a `for` attribute containing `bought` as its value."
     );
 
     assert(
       $('label[for="finishedReading"]')
         .text()
         .match(/\s*Finished\s*Reading/gi),
-      "The BookForm does not have a label with a text of `Finished Reading`."
+      "The `BookForm` does not have a `<label></label>` with a text of `Finished Reading`."
     );
 
     assert(
       $('label[for="borrowed"]')
         .text()
         .match(/\s*borrowed/gi),
-      "The BookForm does not have a label with a text of `borrowed`."
+      "The `BookForm` does not have a `<label></label>` with a text of `borrowed`."
     );
 
     assert(
       $('label[for="bought"]')
         .text()
         .match(/\s*bought/gi),
-      "The BookForm does not have a label with a text of `bought`."
+      "The `BookForm` does not have a `<label></label>` with a text of `bought`."
     );
   });
 });

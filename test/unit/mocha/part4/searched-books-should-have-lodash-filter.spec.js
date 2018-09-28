@@ -13,7 +13,7 @@ describe("BookList.vue", () => {
     if (script.length == 0) {
       assert(
         false,
-        "We either didn't find a `script` tag, or any code in a script tag in the `BookList` component."
+        "We either didn't find a `script` tag, or any code in a `script` tag in the `BookList` component."
       );
     }
 
@@ -38,7 +38,7 @@ describe("BookList.vue", () => {
 
     assert(
       results.length > 0,
-      "The `BookList`'s `computed` object is not defining an `searchedBooks` computed property."
+      "The `BookList`'s `computed` object is not defining a `searchedBooks` computed property."
     );
 
     let returnStatement = esquery(
@@ -60,7 +60,7 @@ describe("BookList.vue", () => {
 
     assert(
       importDeclaration[0].specifiers[0].local.name == "_",
-      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` in the first line of the `<script></script>` tag. "
+      'The `BookList` component is not importing `_ from "lodash".` Add `import _ from "lodash";` at the top of the `<script></script>` tag. '
     );
 
     importDeclaration = esquery(
@@ -70,7 +70,7 @@ describe("BookList.vue", () => {
 
     assert(
       importDeclaration.length > 0,
-      "The `BookList` component is not importing `_ from lodash.` Add `import _ from lodash` at the top of the `<script></script>` tag. "
+      'The `BookList` component is not importing `_ from "lodash".` Add `import _ from "lodash";` at the top of the `<script></script>` tag. '
     );
 
     let lodashCall = esquery(
@@ -80,7 +80,7 @@ describe("BookList.vue", () => {
 
     assert(
       lodashCall.length > 0,
-      "The `searchedBooks()` computed property  should be using lodash's filter function. Make sure to add `_.filter()` after the `return` statement."
+      "The `searchedBooks()` computed property  should be using `lodash`'s `filter` function. Make sure to add `_.filter()` after the `return` statement."
     );
 
     let filter = esquery(
@@ -90,7 +90,7 @@ describe("BookList.vue", () => {
 
     assert(
       filter.length > 0,
-      "The `searchedBooks()` should be using lodash's filter function. Make sure to add `_.filter()` after your `return` statement."
+      "The `searchedBooks()` computed property should be using `lodash`'s `filter` function. Make sure to add `_.filter()` after your `return` statement."
     );
 
     let books = esquery(
