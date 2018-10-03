@@ -11,6 +11,20 @@ describe("BookForm.vue", () => {
     const content = parse5.serialize(tagName[0].content);
     const $ = cheerio.load(content);
     const h2 = $("h2");
+    const hr = $("hr");
+
+    assert(
+      hr.length > 1,
+      "The `BookList`'s template should have two `<hr>` elements separating the `Filtered Books` section. One `<hr>` should be separating it from the list of books, and the other one should be separating it from the form."
+    );
+
+    assert(
+      hr
+        .prev()
+        .html()
+        .match(/\s*<book-item/gi),
+      "It appears that the `<hr>` element has not been added after the `<ul>` element with the `<book-item>` component."
+    );
 
     assert(
       h2.length > 0,
