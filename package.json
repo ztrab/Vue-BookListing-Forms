@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "node server.js",
     "test:module1": "cross-env NODE_ENV=test mocha 'test/unit/mocha/part1/*.spec.js' || true",
     "test:module2": "cross-env NODE_ENV=test mocha 'test/unit/mocha/part2/*.spec.js' || true",
     "test:module3": "cross-env NODE_ENV=test mocha 'test/unit/mocha/part3/*.spec.js' || true",
@@ -14,12 +14,15 @@
     "test": "NODE_ENV=test mocha 'test/unit/mocha/**/*.spec.js' || true",
     "debug": "NODE_ENV=test mocha --debug-brk",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "postinstall": "npm run build",
+    "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "esprima": "^4.0.0",
     "esquery": "^1.0.1",
+    "express": "^4.16.4",
     "lodash": "^4.17.10",
     "npm": "^6.4.1",
     "parse5": "^3.0.3",
