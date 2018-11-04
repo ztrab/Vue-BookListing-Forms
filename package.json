@@ -8,8 +8,8 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "test:module1": "cross-env NODE_ENV=test mocha 'test/unit/mocha/part1/*.spec.js' || true",
-    "test": "NODE_ENV=test mocha 'test/unit/mocha/**/*.spec.js' || true",
-    "debug": "NODE_ENV=test mocha --debug-brk",
+    "test": "cross-env NODE_ENV=test mocha 'test/unit/mocha/**/*.spec.js' || true",
+    "debug": "cross-env NODE_ENV=test mocha --debug-brk",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js"
   },
