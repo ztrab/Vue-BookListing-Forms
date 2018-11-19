@@ -3,7 +3,7 @@ const parse5 = require("parse5");
 const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
-describe("BookForm.vue", () => {
+describe("BookList.vue", () => {
   it("should contain a select with a `v-model` directive @book-form-will-contain-select-tag", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
@@ -30,16 +30,13 @@ describe("BookForm.vue", () => {
       "The `BookList`'s template does not have a `<select>` element."
     );
 
-    assert.hasAnyKeys(
-      select.attr(),
-      ["v-model"],
+    assert(
+      !!select.attr()["v-model"],
       "The `BookList`s `<select></select>` element does not have a `v-model` directive containing `holding` as its value."
     );
 
-    assert.propertyVal(
-      select.attr(),
-      "v-model",
-      "holding",
+    assert(
+      select.attr()["v-model"].match(/\s*holding\s*$/),
       "The `BookList`'s `<select></select>` tag does not have a `v-model` directive containing `holding` as its value."
     );
   });

@@ -28,16 +28,13 @@ describe("BookForm.vue", () => {
       "The `BookList`'s template does not contain two `<book-item></book-item>` components in it."
     );
 
-    assert.hasAnyKeys(
-      bookItem.attr(),
-      ["v-for"],
+    assert(
+      !!bookItem.attr()["v-for"],
       "The first `BookList`'s `<book-item></book-item>` does not have a `v-for` directive containing 'book in searchedBooks' as its value."
     );
 
-    assert.propertyVal(
-      bookItem.attr(),
-      "v-for",
-      "book in searchedBooks",
+    assert(
+      bookItem.attr()["v-for"].match(/\s*book\s*in\s*searchedBooks\s*/),
       "The first `BookList`'s `<book-item></book-item>` does not have a `v-for` directive containing 'book in searchedBooks' as its value."
     );
 

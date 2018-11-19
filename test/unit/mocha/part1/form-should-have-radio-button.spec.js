@@ -17,17 +17,33 @@ describe("BookForm.vue", () => {
       "The form doesn't have two `<input>` elements with a `type` of `radio`."
     );
 
-    assert.hasAnyKeys(
-      radio.attr(),
-      ["v-model"],
-      "The `BookForm` radio does not have a `v-model` directive containing `bookData.ownership` as its value."
-    );
+    $(radio).each(function(i, elem) {
+      if (i === 0) {
+        assert(
+          $(this).attr()["v-model"],
+          "The first `BookForm` radio does not have a `v-model` directive containing `bookData.ownership` as its value."
+        );
 
-    assert.propertyVal(
-      radio.attr(),
-      "v-model",
-      "bookData.ownership",
-      "The `BookForm` radio does not have a `v-model` directive containing `bookData.finishedReading` as its value."
-    );
+        assert(
+          $(this)
+            .attr()
+            ["v-model"].match(/\s*bookData.ownership\s*$/),
+          "The first `BookForm` radio does not have a `v-model` directive containing `bookData.finishedReading` as its value."
+        );
+      }
+      if (i === 1) {
+        assert(
+          $(this).attr()["v-model"],
+          "The second `BookForm` radio does not have a `v-model` directive containing `bookData.ownership` as its value."
+        );
+
+        assert(
+          $(this)
+            .attr()
+            ["v-model"].match(/\s*bookData.ownership\s*$/),
+          "The second `BookForm` radio does not have a `v-model` directive containing `bookData.finishedReading` as its value."
+        );
+      }
+    });
   });
 });

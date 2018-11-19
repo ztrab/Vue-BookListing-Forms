@@ -66,10 +66,15 @@ describe("BookForm.vue", () => {
       "We are not calling `this.$emit()` with `bookData` as its second argument."
     );
 
-    assert.propertyVal(
-      form.attr(),
-      "v-on:submit.prevent",
-      "bookSubmit(bookData)",
+    assert(
+      !!form.attr()["v-on:submit.prevent"],
+      "The `BookForm` form element does not have a `v-on:submit.prevent` directive."
+    );
+
+    assert(
+      form
+        .attr()
+        ["v-on:submit.prevent"].match(/\s*bookSubmit\(\s*bookData\s*\)\s*$/),
       "The `v-on:submit.prevent` directive should update the `bookSubmit` call to take `bookData` as its argument."
     );
   });

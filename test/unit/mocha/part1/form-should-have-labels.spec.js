@@ -17,16 +17,13 @@ describe("BookForm.vue", () => {
       "The form doesn't have three `<label>` elements with a `for` attribute."
     );
 
-    assert.hasAnyKeys(
-      label.attr(),
-      ["for"],
+    assert(
+      !!label.attr()["for"],
       "The `BookForm` `<label></label>` does not have a `for` attribute containing `finishedReading` as its value."
     );
 
-    assert.propertyVal(
-      label.attr(),
-      "for",
-      "finishedReading",
+    assert(
+      label.attr()["for"].match(/\s*finishedReading\s*$/),
       "The `BookForm` `<label></label>` does not have a `for` attribute containing `finishedReading` as its value."
     );
 

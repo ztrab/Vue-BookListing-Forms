@@ -3,7 +3,7 @@ const parse5 = require("parse5");
 const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
-describe("BookForm.vue", () => {
+describe("BookList.vue", () => {
   it("should contain a 'book-item' element a v-for for filtered-books @book-item-v-for-has-filtered-books", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
@@ -28,9 +28,8 @@ describe("BookForm.vue", () => {
       "The `BookList`'s template does not contain two `<book-item></book-item>` components in it."
     );
 
-    assert.hasAnyKeys(
-      bookItem.attr(),
-      ["v-for"],
+    assert(
+      !!bookItem.attr()["v-for"],
       "The `BookList's` `<book-item></book-item>` does not have a `v-for` directive containing 'book in filteredBooks' as its value."
     );
 
@@ -40,8 +39,8 @@ describe("BookForm.vue", () => {
       bookItem2 = $(this).attr("v-for") === "book in filteredBooks";
     });
 
-    assert.isTrue(
-      bookItem2,
+    assert(
+      !!bookItem2,
       "The second `BookList`'s `<book-item></book-item>` does not have a `v-for` directive containing 'book in filteredBooks' as its value."
     );
   });

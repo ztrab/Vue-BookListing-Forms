@@ -3,7 +3,7 @@ const parse5 = require("parse5");
 const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
-describe("BookForm.vue", () => {
+describe("BookList.vue", () => {
   it("should contain a select with a `v-model` directive @book-form-will-contain-option-tag", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
@@ -16,7 +16,7 @@ describe("BookForm.vue", () => {
 
     assert(
       h2.length > 0,
-      "The `BookList`'s template does not have a `<h2>` element."
+      "The `BookList`'s template does not have an `<h2>` element."
     );
 
     assert(
@@ -31,16 +31,13 @@ describe("BookForm.vue", () => {
       "The `BookList`'s template does not have a `<select>` element."
     );
 
-    assert.hasAnyKeys(
-      select.attr(),
-      ["v-model"],
+    assert(
+      !!select.attr()["v-model"],
       "The `BookList`s `<select></select>` element does not have a `v-model` directive containing `holding` as its value."
     );
 
-    assert.propertyVal(
-      select.attr(),
-      "v-model",
-      "holding",
+    assert(
+      select.attr()["v-model"].match(/\s*holding\s*$/),
       "The `BookList`'s `<select></select>` tag does not have a `v-model` directive containing `holding` as its value."
     );
 
@@ -49,16 +46,13 @@ describe("BookForm.vue", () => {
       "The `BookList`'s template does not have an `<option>` element."
     );
 
-    assert.hasAnyKeys(
-      option.attr(),
-      ["v-for"],
+    assert(
+      !!option.attr()["v-for"],
       "The `BookList`'s `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
     );
 
-    assert.propertyVal(
-      option.attr(),
-      "v-for",
-      "filter in filters",
+    assert(
+      option.attr()["v-for"].match(/\s*filter\s*in\s*filters\s*$/),
       "The `BookList`'s `<option></option>` element does not have a `v-for` directive with `filter in filters` as its value."
     );
 

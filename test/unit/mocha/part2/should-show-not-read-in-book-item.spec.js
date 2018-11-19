@@ -24,16 +24,13 @@ describe("BookItem.vue", () => {
       "It doesn't look like we are adding two `<span></span>` elements to the `BookList`'s template."
     );
 
-    assert.hasAnyKeys(
-      firstSpan.attr(),
-      ["v-if"],
+    assert(
+      !!firstSpan.attr()["v-if"],
       "The `BookItem`'s template does not have a `<span></span>` with a `v-if` directive."
     );
 
-    assert.propertyVal(
-      firstSpan.attr(),
-      "v-if",
-      "book.finishedReading",
+    assert(
+      firstSpan.attr()["v-if"].match(/\s*book.finishedReading\s*$/),
       "The `BookItem`'s template does not have a `<span></span>` with a `v-if` directive containing `book.finishedReading` as its value."
     );
 
@@ -44,9 +41,8 @@ describe("BookItem.vue", () => {
       "The `BookItem`'s `<span></span>` with the `v-if` directive does not have a text of `Read`."
     );
 
-    assert.hasAnyKeys(
-      secondSpan.attr(),
-      ["v-else"],
+    assert(
+      secondSpan.attr()["v-else"] !== undefined,
       "The `BookItem`'s template does not a `<span></span>` with a `v-else` directive."
     );
 
