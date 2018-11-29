@@ -3,7 +3,7 @@ const parse5 = require("parse5");
 const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
-describe("BookForm.vue", () => {
+describe.only("BookForm.vue", () => {
   it("should contain a select with a `v-model` directive @book-list-will-contain-h2", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
@@ -19,10 +19,7 @@ describe("BookForm.vue", () => {
     );
 
     assert(
-      hr
-        .prev()
-        .html()
-        .match(/\s*<book-item/gi),
+      hr.prevUntil("book-item").length > 0,
       "It appears that the `<hr>` element has not been added after the `<ul>` element with the `<book-item>` component."
     );
 
