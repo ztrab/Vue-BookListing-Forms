@@ -3,7 +3,7 @@ const parse5 = require("parse5");
 const cheerio = require("cheerio");
 const helpers = require("../helpers");
 
-describe.only("BookForm.vue", () => {
+describe("BookForm.vue", () => {
   it("should contain a select with a `v-model` directive @book-list-will-contain-h2", () => {
     const file = helpers.readFile("src/components/BookList.vue");
     const nodes = helpers.parseFile(file);
