@@ -67,7 +67,7 @@ export default {
         title: bookData.bookTitle, 
         author: bookData.bookAuthor, 
         finishedReading: bookData.finishedReading,
-        ownership: bookdata.ownership
+        ownership: bookData.ownership,
       });
     }
   }
