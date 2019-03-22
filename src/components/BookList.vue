@@ -47,7 +47,7 @@ export default {
       this.books.push({ 
         title: bookData.bookTitle, 
         author: bookData.bookAuthor, 
-        finishedReading: bookData.finishedReadng 
+        finishedReading: bookData.finishedReading 
       });
     }
   }
