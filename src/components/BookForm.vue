@@ -11,11 +11,11 @@
     <div>
       <label for="borrowed">
         Borrowed
-        <input v-mobel="bookData.owership" type="radio" value="borrowed">
+        <input v-mobel="bookData.ownership" type="radio" value="borrowed">
       </label>
       <label for="bought">
         Bought
-        <input v-mobel="bookData.owership" type="radio" value="bought">
+        <input v-mobel="bookData.ownership" type="radio" value="bought">
       </label>
     </div>
     <button type="submit" name="button">Add Book</button>
