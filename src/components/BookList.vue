@@ -6,7 +6,7 @@
     </ul>
     <hr>
     <h2>Filtered Books by Ownership</h2>
-    <select>
+    <select v-model="holding">
       <option v-for="filter in filters">{{filter}}</option>
     </select>
     <ul>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import _ from "lodash":
+import _ from "lodash";
 import BookItem from "./BookItem";
 import BookForm from "./BookForm";
 
@@ -33,23 +33,23 @@ export default {
           title: "Self-Reliance", 
           author: "Ralph Waldo Emerson", 
           finishedReading: true,
-          ownership: "borrowed"
+          ownership: "borrowed",
         },
         { 
           title: "American Gods", 
           author: "Neil Gaiman", 
           finishedReading: false,
-          ownership: "bought"
+          ownership: "bought",
         },
         { 
           title: "Amusing Ourselves to Death", 
           author: "Neil Postman", 
           finishedReading: true,
-          ownership: "borrowed"
+          ownership: "borrowed",
         }
       ],
       filters: ["bought", "borrowed"],
-      holding: "bought"
+      holding: "bought",
     };
   },
   components: {
@@ -60,14 +60,14 @@ export default {
     filteredBooks() {
       return _.filter(this.books, ["ownership", this.holding])
     }
-  }
+  },
   methods: {
     appendBook(bookData) {
       this.books.push({ 
         title: bookData.bookTitle, 
         author: bookData.bookAuthor, 
         finishedReading: bookData.finishedReading,
-        ownership: bookdata.ownership,
+        ownership: bookdata.ownership
       });
     }
   }
